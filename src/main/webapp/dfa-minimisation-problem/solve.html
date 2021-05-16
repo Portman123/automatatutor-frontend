@@ -1,0 +1,37 @@
+<div>
+	<h2> Solve a DFA minimisation problem </h2>
+	Minimise the following DFA (i.e. construct a DFA equivalent to the following but with the minimal number of states):
+	<dfaeditform:alphabettext> </dfaeditform:alphabettext>:</br> 
+	<dfaeditform:problemdescription> </dfaeditform:problemdescription> </br></br>
+
+    <link rel="stylesheet" href="/stylesheets/proto2.css" type="text/css"/>
+    <link rel="stylesheet" href="/stylesheets/interface.css" type="text/css"/>
+
+    <script type="text/javascript" src="/javascript/lib/d3.min.js"></script>
+    <script type="text/javascript" src="/javascript/lib/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="/javascript/lib/jquery.contextmenu.js"></script>
+    <script type="text/javascript" src="/javascript/lib/browser.js"></script>
+    <script type="text/javascript" src="/javascript/lib/contextmenu.js"></script>
+
+	<script type="text/javascript" src="/javascript/interface.js"> </script>
+	<script type="text/javascript" src="/javascript/includeDFAMin.js"> </script>
+
+	
+	<lift:embed what="/dfa-minimisation-problem/applet-solve"> </lift:embed>
+
+	
+	<form class="lift:form">
+		<nfatodfaform:setupscript> </nfatodfaform:setupscript>
+		<nfatodfaform:submitbutton> </nfatodfaform:submitbutton>
+		<nfatodfaform:returnlink> </nfatodfaform:returnlink>
+	</form>
+
+	<div id="feedbackdisplay" style="display:none" class="gradefeed">
+		<h3> Grade: <span id="grade" /> </h3>
+		<h3> Feedback: </h3>
+		<ul>
+			<div id="feedback"/>
+		</ul>
+	</div>	
+
+</div> 

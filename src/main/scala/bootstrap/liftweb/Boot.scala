@@ -44,7 +44,9 @@ class Boot {
 	    NFAToDFAProblem, NFAToDFASolutionAttempt, 
       RegExConstructionProblem, RegexConstructionSolutionAttempt,
       PumpingLemmaProblem, PumpingLemmaSolutionAttempt,
-	    ProblemSet, Role, SolutionAttempt, Supervision)
+	    ProblemSet, Role, SolutionAttempt, Supervision,
+      DFAMinimisationProblem, DFAMinSolutionAttempt,
+      RegexpToDFAProblem, RegexpToDFASolutionAttempt)
 	
   StartupHooks.hooks map (hook => hook())
 

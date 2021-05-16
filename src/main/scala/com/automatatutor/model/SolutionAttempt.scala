@@ -57,6 +57,17 @@ object NFAToDFASolutionAttempt extends NFAToDFASolutionAttempt with LongKeyedMet
 
 }
 
+class DFAMinSolutionAttempt extends LongKeyedMapper[DFAMinSolutionAttempt] with IdPK {
+	def getSingleton = DFAMinSolutionAttempt
+
+	object solutionAttemptId extends MappedLongForeignKey(this, SolutionAttempt)
+	object attemptAutomaton extends MappedText(this)
+}
+
+object DFAMinSolutionAttempt extends DFAMinSolutionAttempt with LongKeyedMetaMapper[DFAMinSolutionAttempt] {
+
+}
+
 class RegexConstructionSolutionAttempt extends LongKeyedMapper[RegexConstructionSolutionAttempt] with IdPK {
 	def getSingleton = RegexConstructionSolutionAttempt
 
@@ -65,6 +76,17 @@ class RegexConstructionSolutionAttempt extends LongKeyedMapper[RegexConstruction
 }
 
 object RegexConstructionSolutionAttempt extends RegexConstructionSolutionAttempt with LongKeyedMetaMapper[RegexConstructionSolutionAttempt] {
+
+}
+
+class RegexpToDFASolutionAttempt extends LongKeyedMapper[RegexpToDFASolutionAttempt] with IdPK {
+	def getSingleton = RegexpToDFASolutionAttempt
+
+	object solutionAttemptId extends MappedLongForeignKey(this, SolutionAttempt)
+	object attemptRegex extends MappedText(this)
+}
+
+object RegexpToDFASolutionAttempt extends RegexpToDFASolutionAttempt with LongKeyedMetaMapper[RegexpToDFASolutionAttempt] {
 
 }
 

@@ -32,3 +32,4 @@ libraryDependencies ++= {
 	"org.seleniumhq.selenium" % "selenium-java"           % "2.44.0"              % "test"
   )
 }
+

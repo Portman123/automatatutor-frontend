@@ -186,6 +186,7 @@ object RegExConstructionSnippet extends ProblemSnippet {
       }
       
     }
+
     // Remember to remove all newlines from the generated XML by using filter
     val alphabetText = Text("{" + specificProblem.alphabet + "}")
     val problemDescription = generalProblem.getLongDescription

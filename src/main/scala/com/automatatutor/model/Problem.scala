@@ -1,11 +1,6 @@
 package com.automatatutor.model
 
-import com.automatatutor.snippet.DFAConstructionSnippet
-import com.automatatutor.snippet.NFAProblemSnippet
-import com.automatatutor.snippet.NFAToDFAProblemSnippet
-import com.automatatutor.snippet.ProblemSnippet
-import com.automatatutor.snippet.RegExConstructionSnippet
-import com.automatatutor.snippet.PumpingLemmaProblemSnippet
+import com.automatatutor.snippet.{DFAConstructionSnippet, DFAMinimisationSnippet, NFAProblemSnippet, NFAToDFAProblemSnippet, ProblemSnippet, PumpingLemmaProblemSnippet, RegExConstructionSnippet, RegexpToDFASnippet}
 import net.liftweb.common.Empty
 import net.liftweb.common.Full
 import net.liftweb.mapper.By
@@ -29,12 +24,16 @@ class ProblemType extends LongKeyedMapper[ProblemType] with IdPK {
 	val EnglishToRegExTypeName = "English to Regular Expression"
 	//val PLTypeName = "Pumping Lemma Proof"
 	val BuchiSolvingTypeName = "Buchi Game Solving"
+	val DFAMinimisationTypeName = "DFA Minimisation"
+	val RegexpToDFATypeName = "Regular Expression to DFA"
 
     val knownProblemTypes : Map[String, ProblemSnippet] = Map(
         DFAConstructionTypeName -> DFAConstructionSnippet,
         NFAConstructionTypeName -> NFAProblemSnippet,
         NFAToDFATypeName -> NFAToDFAProblemSnippet,
-        EnglishToRegExTypeName -> RegExConstructionSnippet
+        EnglishToRegExTypeName -> RegExConstructionSnippet,
+				DFAMinimisationTypeName -> DFAMinimisationSnippet,
+				RegexpToDFATypeName -> RegexpToDFASnippet
         ) ++
         (if(Config.buchiGameSolving.enabled.get) { Map(BuchiSolvingTypeName -> BuchiGameSolving.SnippetAdapter) } else { Map[String, ProblemSnippet]() })
 	
@@ -50,6 +49,9 @@ class ProblemType extends LongKeyedMapper[ProblemType] with IdPK {
 	  case NFAConstructionTypeName => NFAConstructionProblem.findByGeneralProblem(generalProblem)
 	  case NFAToDFATypeName => NFAToDFAProblem.findByGeneralProblem(generalProblem)
 	  case EnglishToRegExTypeName => RegExConstructionProblem.findByGeneralProblem(generalProblem)
+		case DFAMinimisationTypeName => DFAMinimisationProblem.findByGeneralProblem(generalProblem)
+		case RegexpToDFATypeName => RegexpToDFAProblem.findByGeneralProblem(generalProblem)
+
 	}
 }
 

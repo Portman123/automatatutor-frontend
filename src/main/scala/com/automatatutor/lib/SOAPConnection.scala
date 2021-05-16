@@ -118,6 +118,20 @@ object GraderConnection {
 	  
 	  return ((responseXml \ "grade").text.toInt, (responseXml \ "feedString" \ "ul" \ "li"))
 	}
+
+  def getRegexToDFAFeedback(correctRegexDescription : String, attemptDfaDescription : String, alphabet : String, maxGrade : Int) : (Int, NodeSeq) = {
+    val arguments = Map[String, Node](
+      "regexCorrectDesc" -> XML.loadString(correctRegexDescription),
+      "dfaAttemptDesc" -> XML.loadString(attemptDfaDescription),
+      "alphabet" -> XML.loadString(alphabet),
+      "maxGrade" -> Elem(null, "maxGrade", Null, TopScope, true, Text(maxGrade.toString)),
+      "feedbackLevel" -> Elem(null, "feedbackLevel", Null, TopScope, true, Text("Hint")),
+      "enabledFeedbacks" -> Elem(null, "enabledFeedbacks", Null, TopScope, true, Text("ignored")));
+
+    val responseXml = soapConnection.callMethod(namespace, "ComputeFeedbackRegexpToDFA", arguments)
+
+    return ((responseXml \ "grade").text.toInt, (responseXml \ "feedString" \ "ul" \ "li"))
+  }
 	
 	// NFA 
 	
@@ -148,8 +162,21 @@ object GraderConnection {
 	  
 	  return ((responseXml \ "grade").text.toInt, (responseXml \ "feedString" \ "ul" \ "li"))
 	}	
-	
-	// Regular expressions
+
+  // DFA Minimisation
+
+  def getDfaMinimisationFeedback(correctNfaDescription : String, attemptDfaDescription : String, maxGrade : Int) : (Int, NodeSeq) = {
+    val arguments = Map[String, Node](
+      "dfaCorrectDesc" -> XML.loadString(correctNfaDescription),
+      "dfaAttemptDesc" -> XML.loadString(attemptDfaDescription),
+      "maxGrade" -> Elem(null, "maxGrade", Null, TopScope, true, Text(maxGrade.toString)));
+
+    val responseXml = soapConnection.callMethod(namespace, "ComputeFeedbackDfaMinimisation", arguments)
+
+    return ((responseXml \ "grade").text.toInt, (responseXml \ "feedString" \ "ul" \ "li"))
+  }
+
+  // Regular expressions
 	
 	def getRegexFeedback(correctRegex : String, attemptRegex : String, alphabet : Seq[String], maxGrade : Int) : (Int, NodeSeq) = {
 	  val arguments = Map[String, Node](

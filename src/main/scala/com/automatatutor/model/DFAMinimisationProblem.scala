@@ -1,6 +1,6 @@
 package com.automatatutor.model
 
-import com.automatatutor.model.DFAMinimisationProblem.{bulkDelete_!!, find}
+//import com.automatatutor.model.DFAMinimisationProblem.{bulkDelete_!!, find}
 //import scala.xml.{NodeSeq, XML}
 //import net.liftweb.mapper.{By, IdPK, LongKeyedMapper, LongKeyedMetaMapper, MappedLongForeignKey, MappedText}
 import net.liftweb.mapper.MappedString
@@ -12,6 +12,8 @@ import net.liftweb.mapper.By
 import net.liftweb.mapper.MappedText
 import scala.xml.XML
 import scala.xml.NodeSeq
+
+//Interface for database. handles queries, data persistance etc.
 
 class DFAMinimisationProblem extends LongKeyedMapper[DFAMinimisationProblem] with IdPK with SpecificProblem[DFAMinimisationProblem] {
   def getSingleton = DFAMinimisationProblem

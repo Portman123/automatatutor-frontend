@@ -10,7 +10,7 @@
     <script type="text/javascript" src="/javascript/lib/contextmenu.js"></script>
 
 	<script type="text/javascript" src="/javascript/interface.js"> </script>
-	<script type="text/javascript" src="/javascript/includeNFA.js"> </script>
+	<script type="text/javascript" src="/javascript/includeDFA.js"> </script>
 	<script type="text/javascript" src="/javascript/alphabetUtil.js"> </script>
 
 	<script type="text/javascript">
@@ -22,7 +22,7 @@
 		}
 	</script>
 
-	<h2> Create a new NFA to DFA problem </h2>
+	<h2> Edit a DFA minimisation problem </h2>
 
 	<form id="alphabetForm" action="">
 		Note that resetting the alphabet will also reset the whole automaton <br />
@@ -30,7 +30,7 @@
 		<input type="button" value="Set Alphabet" onclick="setAlphabet()">
 	</form>
 
-	<lift:embed what="/nfa-to-dfa-problem/applet-nfa"> </lift:embed>
+	<lift:embed what="/dfa-minimisation-problem/applet-set"> </lift:embed>
 	
 	<script type="text/javascript">
 		// On load, set the alphabet to a,b as standard.
